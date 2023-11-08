@@ -11,7 +11,10 @@ app.get('/', (request, response) => {
 app.get('/hello', (req, res) => {
     res.send('hello world !!')
 })
-// POST 
+// POST - Create data
+app.post('/create', (request, response) => {
+    response.send('created..')
+})
 // PUT
 // DELETE
 
