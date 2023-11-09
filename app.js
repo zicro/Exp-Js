@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const taskRoutes = require('./routes/taskRoutes')
 
 const app = express()
 const port = 3001
@@ -17,20 +18,8 @@ app.use(express.json())
  db.on('error', err => console.log(err));
  db.once('open', () => console.log('connection open'));
 
-// HTTTP METHODS
-// GET - Retreive Data
-app.get('/', (request, response) => {
-    response.send('welCome to the Main app ... 0x0 !!')
-})
-app.get('/hello', (req, res) => {
-    res.send('hello world !!')
-})
-// POST - Create data
-app.post('/create', (request, response) => {
-    response.send('created..')
-})
-// PUT
-// DELETE
+// HTTTP METHODS From The routes Folder
+app.use(taskRoutes);
 
 
 app.listen(port, () => {
