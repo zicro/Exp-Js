@@ -1,12 +1,18 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const taskRoutes = require('./routes/taskRoutes')
+const register = require('./routes/register')
 
 const app = express()
 const port = 3001
 
+
+
 // Middleware parser for the Body
 app.use(express.json())
+
+
+
 
 // DB connection
  mongoose.connect('mongodb://admin:admin@localhost:27017/todo?authSource=admin', {
@@ -19,6 +25,7 @@ app.use(express.json())
  db.once('open', () => console.log('connection open'));
 
 // HTTTP METHODS From The routes Folder
+app.use(register);
 app.use(taskRoutes);
 
 
